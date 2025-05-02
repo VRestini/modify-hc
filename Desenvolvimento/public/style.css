@@ -28,6 +28,7 @@ body{
 .section-register{
     background: linear-gradient(45deg, #3e016a 0%, #601199 30%, #8931b5 70%, #9847ad 100%);
 }
+
 .container-box, .container-box-register{
     background-color: #2A2A2A;
     height: 400px;

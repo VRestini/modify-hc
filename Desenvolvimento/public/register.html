@@ -50,7 +50,24 @@
         }else if(passwordConfirm != password){
 
         }else{
-            window.location.assign("login.html");
+            fetch("/user/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nameServer: name,
+                    emailServer: email,
+                    passwordServer: password
+                }),
+            }).then(function(response){
+                if(response.ok)
+                    window.location.assign("login.html");
+            })
+
+            
+
+            
         }
     }
 </script>

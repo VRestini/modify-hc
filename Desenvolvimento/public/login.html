@@ -42,6 +42,27 @@
         }
         else if(password.length < 6){
             //
+        }else{
+            fetch("/user/authenticate",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    passwordServer: password
+            })
+            }).then(function (response){
+                if(response.ok){
+                    response.json().then(json =>{
+                        sessionStorage.EMAIL_USER = json.email;
+                        sessionStorage.NAME_USER = json.name;
+                        console.log("nois na fita")
+                        window.location.assign("index.html");
+                    })
+                }else   
+                    console.log("Erro ao tentar login")
+            })
         }
     }
 </script>
