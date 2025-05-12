@@ -11,6 +11,10 @@
     "url": "git+https://github.com/VRestini/modify-hc.git"
   },
   "author": "VRestini",
+  "inspiração":{
+    "api": "web-data-viz",
+    "url": "https://github.com/BandTec/web-data-viz"
+  } ,
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/VRestini/modify-hc/issues"
