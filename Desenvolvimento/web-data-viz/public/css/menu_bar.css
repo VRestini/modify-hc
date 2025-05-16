@@ -1,0 +1,30 @@
+body{
+    margin: auto;
+}
+.nav_bar{
+    width: 20%;
+    margin-left:0;
+    height: 100vh;
+    color: whitesmoke;
+    position: fixed;
+    width: 15%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.nav_bar a{
+    color: whitesmoke;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    height: 3vh;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+};
+.nav_bar a:hover{
+    background-color: rgba(0, 0, 0, 0.7);
+}
