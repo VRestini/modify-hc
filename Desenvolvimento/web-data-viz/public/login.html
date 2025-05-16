@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style_login.css">
+</head>
+<body>
+    <section class="section-login">
+        <div class="container-box">
+            <div class="container-form">
+                <h2>Seja bem vindo ao Modify HC!</h2>
+                <div class="form-group">
+                    <label class="form-label">Insira seu e-mail:</label>
+                    <input type="text" class="input-form email" id="input_email">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Insira sua senha:</label>
+                    <input type="password" class="input-form password" id="input_password">
+                </div>
+                <button class="btn-primary" onclick="login()">LOGIN</button>
+                <div id="form-link-register">
+                    <span>Não possui conta? <a href="register.html">Realizar Cadastro</a></span>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
+<script>
+    function login(){
+        var email = input_email.value
+        var password = input_password.value
+        if(email == "" || password == ""){
+            alert("teste")
+        }else if(email.indexOf("@")==-1){
+            alert("email inválido")
+        }
+        else if(password.length < 6){
+            alert("Senha pequena")
+        }else{
+            fetch("/user/authenticate",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    passwordServer: password
+                })
+            }).then(function (response){
+                console.log("ESTOU NO THEN DO entrar()!")
+                console.log(response)
+                if(response.ok){
+                    console.log(response)
+                    alert("login feito")
+                    window.location.assign("home.html");
+                    response.json().then(json =>{
+                        sessionStorage.NAME_USER = json.name;        
+                    })                   
+                }else   
+                    console.log("Erro ao tentar login")
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+        }
+    }
+</script>
