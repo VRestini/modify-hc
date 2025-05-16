@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/menu_bar.css">
+</head>
+<body>
+    <div class="nav_bar">
+        <img src="./assets/img/acount_icon.svg" id="user_icon">
+        <h1 id="id_user"></h1>
+        <a href="home.html">Home</a>
+        <a href="quizMenu.html" style="color: #35026a;">Quiz</a>
+        <a href="conteudo.html">Conteúdo</a>
+    </div>  
+    <section></section>
+</body>
+</html>
+<script>
+    id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
+</script>

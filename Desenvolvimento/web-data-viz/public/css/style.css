@@ -1,3 +1,7 @@
+@font-face{
+    font-family: 'gidole';
+    src: url("../assets/fonts/Gidole-Regular.ttf") format('truetype');
+}
 body{
     background: linear-gradient(145deg, #0f0524 0%, #1e0345 20%,#29055c 40% ,#35026a 80%,#240347 100%);
     box-sizing: border-box;
