@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu_bar.css">
     <link rel="stylesheet" href="./css/dash.css">
+    <script src="./js/sessao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -16,10 +17,10 @@
             <h1 id="id_user"></h1>
         </div>
         
-        <a href="home.html" style="color: #35026a;">Home</a>
+        <a href="home.html" id="nav_select">Home</a>
         <a href="quizMenu.html">Quiz</a>
         <a href="conteudo.html">Conteúdo</a>
-        <a href="" id="link_logout"> Sair </a>
+        <a onclick="exit()"> Sair </a>
     </div>  
     <section>
         <div id="dash_box">
@@ -37,6 +38,11 @@
 </body>
 </html>
 <script>
+  function exit(){
+    var resposta = confirm("Quer continuar?")
+    if(resposta)    
+      limparSessao()
+  }
     id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
 
     const ctxLine = document.getElementById('myChartLine');

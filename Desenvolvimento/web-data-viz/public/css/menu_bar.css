@@ -28,16 +28,23 @@ body{
 }
 .nav_bar a{
     color: whitesmoke;
-
     height: 3vh;
-    width: 100%;
-    margin-top: 15px;
+    width: 80%;
+    border-radius: 5px;
+    margin-top: 10px;
     text-align: center;
     text-decoration: none;
-    font-family: 'gidole'
-};
+    font-family: 'gidole';
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+.nav_bar #nav_select{
+    background-color: rgba(255, 255, 255, 0.03); /* Cor mais clara para o link selecionado */
+    color: white; /* Texto branco para melhor legibilidade */
+    font-weight: bold; /* Opcional: destaque em negrito */
+}
 .nav_bar a:hover{
-    background-color:red
+    background-color: rgba(255, 255,255, 0.05);
 }
 .nav_user{
 

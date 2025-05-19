@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu_bar.css">
+    <script src="./js/sessao.js"></script>
 </head>
 <body>
     <div class="nav_bar">
@@ -13,11 +14,15 @@
         <h1 id="id_user"></h1>
         <a href="home.html">Home</a>
         <a href="quizMenu.html">Quiz</a>
-        <a href="conteudo.html" style="color: #35026a;">Conteúdo</a>
+        <a href="conteudo.html" id="nav_select">Conteúdo</a>
+        <a onclick="exit()"> Sair </a>
     </div>  
     <section></section>
 </body>
 </html>
 <script>
+    function exit(){
+        limparSessao()
+    }
     id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
 </script>
