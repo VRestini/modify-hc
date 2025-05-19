@@ -11,8 +11,8 @@ function authenticate(req, res){
             .then(function(response){
                 if (response.length == 1) {
                     res.json({
-                        email: response[0].emailUser,
-                        name: response[0].nameUser // opcional se quiser mostrar nome
+                        email: response[0].email,
+                        name: response[0].name // opcional se quiser mostrar nome
                     });
                 } else if (response.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
