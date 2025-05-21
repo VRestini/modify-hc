@@ -56,3 +56,9 @@ body{
 #link_logout{
     justify-self: self-end;
 }
+section{
+    padding-left:18%;
+    padding-right: 2%;
+    display: flex;
+    flex-direction: column;
+}

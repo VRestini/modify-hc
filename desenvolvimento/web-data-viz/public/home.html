@@ -1,110 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/menu_bar.css">
-    <link rel="stylesheet" href="./css/dash.css">
-    <script src="./js/sessao.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/menu_bar.css">
+  <link rel="stylesheet" href="./css/dash.css">
+  <script src="./js/sessao.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <div class="nav_bar">
-        <div class="nav_user">
-            <img src="./assets/img/acount_icon.svg" id="user_icon">
-            <h1 id="id_user"></h1>
-        </div>
-        
-        <a href="home.html" id="nav_select">Home</a>
-        <a href="quizMenu.html">Quiz</a>
-        <a href="conteudo.html">Conteúdo</a>
-        <a onclick="exit()"> Sair </a>
-    </div>  
-    <section>
-        <div id="dash_box">
-            <div>
-                <canvas id="myChartLine" width="400" height="300"></canvas>
-            </div>
-            <div>
-                <canvas id="myChartBar" width="400" height="300"></canvas>
-            </div>
-        </div>
-        
-    </section>
-    
-    
+  <div class="nav_bar">
+    <div class="nav_user">
+      <img src="./assets/img/acount_icon.svg" id="user_icon">
+      <h1 id="id_user"></h1>
+    </div>
+
+    <a href="home.html" id="nav_select">Home</a>
+    <a href="quizMenu.html">Quiz</a>
+    <a href="conteudo.html">Conteúdo</a>
+    <a onclick="exit()"> Sair </a>
+  </div>
+  <section>
+    <div id="dash_box">
+      <div id="div_kpi">
+        <div class="card_kpi"></div>
+        <div class="card_kpi"></div>
+        <div class="card_kpi"></div>
+      </div>
+      <div>
+        <canvas id="myChartLine" width="400" height="300"></canvas>
+      </div>
+      <div>
+        <canvas id="myChartBar" width="400" height="300"></canvas>
+      </div>
+    </div>
+
+  </section>
+
+
 </body>
+
 </html>
 <script>
-  function exit(){
+  function exit() {
     var resposta = confirm("Quer continuar?")
-    if(resposta)    
+    if (resposta)
       limparSessao()
   }
-    id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
+  id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
 
-    const ctxLine = document.getElementById('myChartLine');
-    new Chart(ctxLine, {
-      type: 'line',
-      data: {
-        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-        datasets: [
-            {
-                label: 'Temperatura',
-                data: [30, 29, 28, 25, 22, 23],
-                borderWidth: 3,
-                backgroundColor: '#ff0000 ',
-                borderColor: '#ff0000 '
-            },
-            {
-                label: 'Umidade',
-                data: [80, 82, 80, 85, 80, 83],
-                borderWidth: 3,
-                backgroundColor: '#0000ff ',
-                borderColor: '#0000ff '
-            }
-        ]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+  const ctxLine = document.getElementById('myChartLine');
+  new Chart(ctxLine, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [
+        {
+          label: 'Temperatura',
+          data: [30, 29, 28, 25, 22, 23],
+          borderWidth: 3,
+          backgroundColor: '#ff0000 ',
+          borderColor: '#ff0000 '
+        },
+        {
+          label: 'Umidade',
+          data: [80, 82, 80, 85, 80, 83],
+          borderWidth: 3,
+          backgroundColor: '#0000ff ',
+          borderColor: '#0000ff '
+        }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
         }
       }
-      
-    });
-    const ctxBar = document.getElementById('myChartBar');
-    new Chart(ctxBar, {
-      type: 'bar',
-      data: {
-        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-        datasets: [
-            {
-                label: 'Temperatura média',
-                data: [22, 24, 27, 23, 20, 18],
-                borderWidth: 3,
-                backgroundColor: '#ff0000 ',
-                borderColor: '#ff0000 '
-            },
-            {
-                label: 'Umidade média',
-                data: [90, 89, 93, 87, 88, 82],
-                borderWidth: 3,
-                backgroundColor: '#0000ff ',
-                borderColor: '#0000ff '
-            }
-        ]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+    }
+
+  });
+  const ctxBar = document.getElementById('myChartBar');
+  new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [
+        {
+          label: 'Temperatura média',
+          data: [22, 24, 27, 23, 20, 18],
+          borderWidth: 3,
+          backgroundColor: '#ff0000 ',
+          borderColor: '#ff0000 '
+        },
+        {
+          label: 'Umidade média',
+          data: [90, 89, 93, 87, 88, 82],
+          borderWidth: 3,
+          backgroundColor: '#0000ff ',
+          borderColor: '#0000ff '
+        }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
         }
       }
-      
-    });
+    }
+
+  });
 </script>

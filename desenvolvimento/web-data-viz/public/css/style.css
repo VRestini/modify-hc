@@ -38,7 +38,7 @@ header a {
 #login_link{
     box-sizing: border-box;
     border: 2px solid  #ffffff;
-    padding: 4% 15% 4% 15%;
+    padding: 5% 30% 5% 30%;
     border-radius: 15px;
 }
 section{
@@ -205,6 +205,6 @@ h2{
     padding: 3%;
     width: 70%;
 }
-..container-about-right span{
+.container-about-right span{
     text-align: justify;
 }

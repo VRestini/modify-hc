@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu_bar.css">
+    <link rel="stylesheet" href="./css/cards.css">
     <script src="./js/sessao.js"></script>
 </head>
 <body>
@@ -17,7 +18,92 @@
         <a href="conteudo.html" id="nav_select">Conteúdo</a>
         <a onclick="exit()"> Sair </a>
     </div>  
-    <section></section>
+    <section >
+        <div class="card-collection" >
+            <div class="card-content">
+                <img alt="" src="./assets/img/tattoo.png">
+                <div class="card-content-text">
+                    <H2>TATUAGEM</H2>
+                    <p>Arte extremamente conhecida no mundo atual, é feita através da pigmentação subcutânea. </p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+            <div class="card-content">
+                <img alt="" src="./assets/img/piercing.png">
+                <div class="card-content-text">
+                    <H2>PIERCING</H2>
+                    <p>Muito utilizada por jovens, é feita através da perfuração da pele ou cartilagem. </p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+            <div class="card-content">        
+                <img alt="" src="./assets/img/alargador.png">
+                <div class="card-content-text">
+                    <H2>ALARGADOR</H2>
+                    <p>Um dos processos mais doloridos, consiste em alargar o tamanho de uma perfuração na pele. </p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+            <div class="card-content">        
+                <img alt="" src="./assets/img/pintura.png">
+                <div class="card-content-text">
+                    <H2>PINTURA</H2>
+                    <p>Modificação corporal temporária que se dá pela pigmentação na camada mais externa da pele</p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-collection" >
+            <div class="card-content">
+                <img alt="" src="./assets/img/implante.png">
+                <div class="card-content-text">
+                    <H2>IMPLANTE</H2>
+                    <p>Uma das artes mais radicais, ocorre pelo implante de um objeto dentro, como chifres, do corpo. </p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+            <div class="card-content">
+                <img alt="" src="./assets/img/escarificação.png">
+                <div class="card-content-text">
+                    <H2>ESCARIFICAÇÃO</H2>
+                    <p>Arte que ocorre através da criação de formas na pele através de cicatrizes </p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+            <div class="card-content">        
+                <img alt="" src="./assets/img/alongamento.png">
+                <div class="card-content-text">
+                    <H2>ALONGAMENTO</H2>
+                    <p>Uma das artes mais raras. Consiste no alongamento de um membro, como o pescoço. </p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+            <div class="card-content">        
+                <img alt="" src="./assets/img/suspensao_2.png">
+                <div class="card-content-text">
+                    <H2>SUSPENSÃO CORPORAL</H2>
+                    <p>Arte que ocorre através da perfuração na pele e suspensão do corpo. </p>
+                </div>
+                <div class="card-content-button">
+                    <button class="card-button"><h2>CONHECER MAIS</button>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
 <script>
@@ -25,4 +111,5 @@
         limparSessao()
     }
     id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
+    
 </script>
