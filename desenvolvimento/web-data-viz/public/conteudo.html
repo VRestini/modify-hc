@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="./css/cards.css">
     <script src="./js/sessao.js"></script>
 </head>
-<body>
+<body >
+    <div class="blur-overlay"></div>
     <div class="nav_bar">
         <img src="./assets/img/acount_icon.svg" id="user_icon">
         <h1 id="id_user"></h1>
@@ -19,6 +20,9 @@
         <a onclick="exit()"> Sair </a>
     </div>  
     <section >
+        <div class="card-content-big">
+            <button onclick="closePopup()">X</button>
+        </div>
         <div class="card-collection" >
             <div class="card-content">
                 <img alt="" src="./assets/img/tattoo.png">
@@ -27,7 +31,7 @@
                     <p>Arte extremamente conhecida no mundo atual, é feita através da pigmentação subcutânea. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">
@@ -37,7 +41,7 @@
                     <p>Muito utilizada por jovens, é feita através da perfuração da pele ou cartilagem. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -47,7 +51,7 @@
                     <p>Um dos processos mais doloridos, consiste em alargar o tamanho de uma perfuração na pele. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -57,7 +61,7 @@
                     <p>Modificação corporal temporária que se dá pela pigmentação na camada mais externa da pele</p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
         </div>
@@ -69,7 +73,7 @@
                     <p>Uma das artes mais radicais, ocorre pelo implante de um objeto dentro, como chifres, do corpo. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">
@@ -79,7 +83,7 @@
                     <p>Arte que ocorre através da criação de formas na pele através de cicatrizes </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -89,7 +93,7 @@
                     <p>Uma das artes mais raras. Consiste no alongamento de um membro, como o pescoço. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -99,7 +103,7 @@
                     <p>Arte que ocorre através da perfuração na pele e suspensão do corpo. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
                 </div>
             </div>
         </div>
@@ -111,5 +115,12 @@
         limparSessao()
     }
     id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
-    
+    function popup(){
+        document.body.classList.add('blur-active');
+        document.querySelector('.card-content-big').style.display = 'block';
+    }
+    function closePopup(){
+        document.body.classList.remove('blur-active');
+        document.querySelector('.card-content-big').style.display = 'none';
+    }
 </script>
