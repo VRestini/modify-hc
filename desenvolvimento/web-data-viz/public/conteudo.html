@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/menu_bar.css">
     <link rel="stylesheet" href="./css/cards.css">
+    <script src="./js/text.js"></script>
     <script src="./js/sessao.js"></script>
+    
 </head>
 <body >
     <div class="blur-overlay"></div>
@@ -20,8 +22,19 @@
         <a onclick="exit()"> Sair </a>
     </div>  
     <section >
-        <div class="card-content-big">
-            <button onclick="closePopup()">X</button>
+        <div class="card-box-big">
+            <div class="card-big-content">
+                <div class="card-big-content-header">
+                    <h2 id="card_content_title"></h2>
+                    <button onclick="closePopup()">
+                        <img src="./assets/img/close.svg" alt="" id="close_popup">
+                    </button>
+                </div>
+                <div class="card-big-content-body">
+                    <p id="card_content_body"></p>
+                </div>
+            </div>
+            
         </div>
         <div class="card-collection" >
             <div class="card-content">
@@ -31,7 +44,7 @@
                     <p>Arte extremamente conhecida no mundo atual, é feita através da pigmentação subcutânea. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('tatuagem')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">
@@ -41,7 +54,7 @@
                     <p>Muito utilizada por jovens, é feita através da perfuração da pele ou cartilagem. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('piercing')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -51,7 +64,7 @@
                     <p>Um dos processos mais doloridos, consiste em alargar o tamanho de uma perfuração na pele. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('alargador')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -61,7 +74,7 @@
                     <p>Modificação corporal temporária que se dá pela pigmentação na camada mais externa da pele</p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('pintura')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
         </div>
@@ -73,7 +86,7 @@
                     <p>Uma das artes mais radicais, ocorre pelo implante de um objeto dentro, como chifres, do corpo. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('implante')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">
@@ -83,7 +96,7 @@
                     <p>Arte que ocorre através da criação de formas na pele através de cicatrizes </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('escarificacao')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -93,7 +106,7 @@
                     <p>Uma das artes mais raras. Consiste no alongamento de um membro, como o pescoço. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('alongamento')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
             <div class="card-content">        
@@ -103,7 +116,7 @@
                     <p>Arte que ocorre através da perfuração na pele e suspensão do corpo. </p>
                 </div>
                 <div class="card-content-button">
-                    <button class="card-button" onclick="popup()"><h2>CONHECER MAIS</button>
+                    <button class="card-button" onclick="popup('suspensao')"><h2>CONHECER MAIS</button>
                 </div>
             </div>
         </div>
@@ -115,12 +128,14 @@
         limparSessao()
     }
     id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
-    function popup(){
+    function popup(content){
         document.body.classList.add('blur-active');
-        document.querySelector('.card-content-big').style.display = 'block';
+        document.querySelector('.card-box-big').style.display = 'block';
+        card_content_title.innerHTML = information[content].titulo
+        card_content_body.innerHTML = information[content].corpo
     }
     function closePopup(){
         document.body.classList.remove('blur-active');
-        document.querySelector('.card-content-big').style.display = 'none';
+        document.querySelector('.card-box-big').style.display = 'none';
     }
 </script>

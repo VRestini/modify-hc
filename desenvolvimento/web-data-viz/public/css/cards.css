@@ -84,16 +84,47 @@
 body.blur-active .blur-overlay {
     display: block;
 }
-.card-content-big{
+.card-box-big{
     display: none;
     border-radius: 15px;
     align-self: center;
     background: #3a0175;
     width: 95vh;
-    height: 95vh;
+    
     top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    
+}
+.card-big-content{
+    padding: 3%;
+    font-family: 'gidole';
+}
+.card-big-content-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5vh;
+    width: 100%;
+    align-items: center;
+    color: white;
+}
+.card-big-content-header button{
+    background-color: transparent;
+    color: white;
+    border: transparent;
+    font-size: large;
+}
+#close_popup{
+    width: 80%;
+    transition: 0.3s;
+}
+#close_popup:hover{
+    transform: scale(1.05);
+}
+#card_content_body{
+    font-size: 20px;
+    color: whitesmoke;
 }
