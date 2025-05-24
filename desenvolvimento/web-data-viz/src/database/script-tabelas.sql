@@ -17,7 +17,8 @@ CREATE TABLE user(
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(45) NOT NULL,
-    category VARCHAR(45) NOT NULL
+    category VARCHAR(45) NOT NULL,
+    describe_quiz VARCHAR(200) NOT NULL
 );
 CREATE TABLE attempt(
     id INT NOT NULL AUTO_INCREMENT,
@@ -28,27 +29,24 @@ CREATE TABLE attempt(
     FOREIGN KEY(user_id) REFERENCES user(id),
     PRIMARY KEY(id, quiz_id, user_id)
 );
+
 CREATE TABLE alternatives(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    wrong_alternative_1 VARCHAR(80) NOT NULL,
-    wrong_alternative_2 VARCHAR(80) NOT NULL,
-    wrong_alternative_3 VARCHAR(80) NOT NULL,
-    correct_alternative VARCHAR(80) NOT NULL
+    content VARCHAR(150) NOT NULL,
+    wrong TINYINT NOT NULL,
+    question_id INT NOT NULL,
+    Foreign Key (question_id) REFERENCES question (id)
 );
 CREATE TABLE question(
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(45) NOT NULL,
-    alternatives_id INT NOT NULL,
     quiz_id INT NOT NULL,
-    FOREIGN KEY (alternatives_id) REFERENCES alternatives(id),
     FOREIGN KEY(quiz_id) REFERENCES quiz(id)
 );
 CREATE TABLE user_answer(
-    id INT NOT NULL AUTO_INCREMENT,
-    alternative_choice VARCHAR(80) NOT NULL,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     alternative_id INT NOT NULL,
-    user_id INT NOT NULL,
+    attempt_id INT NOT NULL,
     FOREIGN KEY(alternative_id) REFERENCES alternatives(id),
-    FOREIGN KEY(user_id) REFERENCES user(id),
-    PRIMARY KEY(id, alternative_id, user_id)
+    FOREIGN KEY(attempt_id) REFERENCES attempt(id)
 );
