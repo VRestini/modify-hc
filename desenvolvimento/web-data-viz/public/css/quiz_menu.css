@@ -1,0 +1,138 @@
+section{
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: start;
+}
+#search_button{
+    background-color: transparent;
+    border: transparent;
+}
+#div-filter-nav{
+    width: 80%;
+    align-self: center;
+    margin-top: 5%;
+    font-family: 'gidole';
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#div-filter{
+    gap: 3%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+#search-div{
+    justify-content: end;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+#search_bar{
+    background-color: #2b0456;
+    color: white;
+    border: 1px solid #6e00ff;
+    width: 80%;
+    font-family: 'gidole';
+    border-radius: 5px;
+    padding: 6px 10px;
+}
+#search_button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+#quiz-box{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 75%;
+    gap: 15px;
+    
+}
+.quiz-card{
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid #2b0456;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 10px;
+    background: #3a0175;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'gidole';
+}
+.quiz-card-left{
+    width: 30%;
+}
+.quiz-card-left img{
+    width: 100%;
+    border-radius: 10px 0px 0px 0px;
+    height: 100%;
+    object-fit: cover;
+}
+.quiz-card-rigth{
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#quiz-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: auto;
+    font-size: 25px;
+}
+.quiz-button {
+    width: fit-content;
+    padding: 8px 16px;
+    background-color: #6e00ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'gidole';
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-button:hover {
+    background-color: #9c47ff;
+}
+
+
+#div-filter select {
+    background-color: #2b0456;
+    color: white;
+    border: 1px solid #6e00ff;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-family: 'gidole';
+    font-size: 14px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="14" viewBox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 30px;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+#div-filter select:hover {
+    border-color: #9c47ff;
+    background-color: #3a0175;
+}
+#div-filter option {
+    color: white;
+    font-family: 'gidole';
+}
+#star-icon{
+    width: 18px;
+    fill: red;
+}
