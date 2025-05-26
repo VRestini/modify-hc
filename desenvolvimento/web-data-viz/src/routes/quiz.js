@@ -4,4 +4,7 @@ var quizController = require("../controllers/quizController");
 router.get("/load", function(req, res){
     quizController.loadQuiz(req, res)
 })
+router.post("/load-by-difficulty", function(req, res){
+    quizController.loadQuizByDifficulty(req, res)
+})
 module.exports = router;

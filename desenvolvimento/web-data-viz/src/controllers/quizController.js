@@ -8,6 +8,22 @@ function loadQuiz(req, res){
             res.status(204).send("Nenhum resultado encontrado!")
     })
 }
+function loadQuizByDifficulty(req, res){
+    var difficulty = req.body.difficultyServer
+    console.log(difficulty)
+    if (difficulty == undefined) 
+        res.status(400).send("Undefined!");
+    else{
+        quizModel.loadDifficulty(difficulty).then(function(response){
+            if(response.length >= 1)
+                res.status(200).json(response)
+            else
+                res.status(204).send("Nenhum resultado encontrado!")
+        })
+    }
+    
+}
 module.exports = {
-    loadQuiz
+    loadQuiz,
+    loadQuizByDifficulty
 }

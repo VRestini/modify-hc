@@ -17,7 +17,8 @@ CREATE TABLE user(
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(45) NOT NULL,
-    category VARCHAR(45) NOT NULL,
+    is_done TINYINT NOT NULL,
+    difficulty CHAR(1),
     describe_quiz VARCHAR(200) NOT NULL
 );
 CREATE TABLE attempt(
