@@ -16,8 +16,6 @@ function authenticate(req, res){
                     });
                 } else if (response.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
-                } else {
-                    res.status(403).send("Mais de um usuário com mesmo login e senha!");
                 }
             })
     }

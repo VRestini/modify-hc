@@ -4,8 +4,6 @@ function loadQuiz(req, res){
     quizModel.load().then(function(response){
         if(response.length >= 1)
             res.status(200).json(response)
-        else
-            res.status(204).send("Nenhum resultado encontrado!")
     })
 }
 function loadQuizByDifficulty(req, res){
@@ -17,8 +15,6 @@ function loadQuizByDifficulty(req, res){
         quizModel.loadDifficulty(difficulty).then(function(response){
             if(response.length >= 1)
                 res.status(200).json(response)
-            else
-                res.status(204).send("Nenhum resultado encontrado!")
         })
     }
     
