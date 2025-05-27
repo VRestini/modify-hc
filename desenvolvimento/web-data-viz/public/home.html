@@ -26,19 +26,36 @@
   </div>
   <section>
     <div id="dash_box">
-      <div id="div_kpi">
-        <div class="card_kpi"></div>
-        <div class="card_kpi"></div>
-        <div class="card_kpi"></div>
+      <div id="dash_top">
+        <div id="div_kpi">
+          <div class="card_kpi">
+            <h1>1.089</h1>
+            <p>PONTUAÇÃO TOTAL</p>
+          </div>
+          <div class="card_kpi">
+            <h1>92</h1>
+            <p>QUESTÕES RESPONDIDAS </p>
+          </div>
+          <div class="card_kpi">
+            <h1>25</h1>
+            <p>QUIZZES RESPONDIDOS</p>
+          </div>
+          <div class="card_kpi">
+            <h1>2</h1>
+            <p>DIFICULDADE MÉDIA DOS QUIZZES</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <canvas id="myChartLine" width="400" height="300"></canvas>
-      </div>
-      <div>
-        <canvas id="myChartBar" width="400" height="300"></canvas>
+
+      <div id="dash_bottom">
+        <div class="card_kpi" id="card_kpi_doughnut">
+          <canvas id="chartDoughnut"></canvas>
+        </div>
+        <div class="card_kpi" id="card_kpi_bar">
+          <canvas id="chartBar"></canvas>
+        </div>
       </div>
     </div>
-
   </section>
 
 
@@ -53,63 +70,132 @@
   }
   id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
 
-  const ctxLine = document.getElementById('myChartLine');
+  const ctxLine = document.getElementById('chartDoughnut');
   new Chart(ctxLine, {
-    type: 'line',
+    type: 'doughnut',
     data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
-      datasets: [
-        {
-          label: 'Temperatura',
-          data: [30, 29, 28, 25, 22, 23],
-          borderWidth: 3,
-          backgroundColor: '#ff0000 ',
-          borderColor: '#ff0000 '
-        },
-        {
-          label: 'Umidade',
-          data: [80, 82, 80, 85, 80, 83],
-          borderWidth: 3,
-          backgroundColor: '#0000ff ',
-          borderColor: '#0000ff '
-        }
-      ]
+      labels: ['Certas: 75%', 'Erradas:25%'],
+      datasets: [{
+        label: 'Desempenho',
+        data: [75, 25],
+
+        backgroundColor: [
+          '#3a0175',
+          'gray'
+        ],
+        borderColor: [
+          'transparent',
+          'transparent'
+        ],
+        borderWidth: 2
+      }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
+      responsive: true,
+      plugins: {
 
+        title: {
+          display: true,
+          text: 'QUESTÕES',
+          color: 'rgba(255,255,255,1)',
+          font: {
+            family: 'gidole',
+            size: 25
+          },
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            color: 'white',
+            font: {
+              family: 'gidole',
+              size: 14
+            },
+            padding: 20,
+  
+            usePointStyle: true
+          }
+        },
+        tooltip: {
+          enabled: true,
+          callbacks: {
+            label: function (context) {
+              return `${context.label}: ${context.raw}%`;
+            }
+          }
+        }
+      },
+
+      animation: {
+        animateScale: true,
+        animateRotate: true
+      },
+      cutout: '80%',// espaço interno
+    }
   });
-  const ctxBar = document.getElementById('myChartBar');
+  const ctxBar = document.getElementById('chartBar');
   new Chart(ctxBar, {
     type: 'bar',
     data: {
-      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      labels: ['Nivel 1', 'Nivel 2', 'Nivel 3'],
       datasets: [
         {
-          label: 'Temperatura média',
-          data: [22, 24, 27, 23, 20, 18],
+          label: 'Questões nivel 1: 22',
+          data: [22,,],
           borderWidth: 3,
-          backgroundColor: '#ff0000 ',
-          borderColor: '#ff0000 '
+          backgroundColor: '#3a0175 ',
+          borderColor: 'transparent '
         },
         {
-          label: 'Umidade média',
-          data: [90, 89, 93, 87, 88, 82],
+          label: 'Questões nivel 2: 24',
+          data: [,24,],
           borderWidth: 3,
-          backgroundColor: '#0000ff ',
-          borderColor: '#0000ff '
+          backgroundColor: '#3a0175 ',
+          borderColor: 'transparent '
+        },
+        {
+          label: 'Questões nivel 2: 27',
+          data: [,,27],
+          borderWidth: 3,
+          backgroundColor: '#3a0175 ',
+          borderColor: 'transparent '
         }
+
       ]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+      responsive: true,
+      plugins: {
+
+        title: {
+          display: true,
+          text: 'DIFICULDADES',
+          color: 'rgba(255,255,255,1)',
+          font: {
+            family: 'gidole',
+            size: 25
+          },
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            color: 'white',
+            font: {
+              family: 'gidole',
+              size: 14
+            },
+            padding: 20,
+            display: 'flex',
+            
+            usePointStyle: true
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
     }
