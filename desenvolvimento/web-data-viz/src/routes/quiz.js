@@ -7,4 +7,7 @@ router.get("/load", function(req, res){
 router.post("/load-by-difficulty", function(req, res){
     quizController.loadQuizByDifficulty(req, res)
 })
+router.post("/load-question", function(req,res){
+    quizController.loadQuestion(req,res)
+})
 module.exports = router;

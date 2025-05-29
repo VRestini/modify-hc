@@ -21,9 +21,23 @@ function loadQuizByDifficulty(req, res){
                 res.status(204).send("Nenhum resultado encontrado!")
         })
     }
-    
+}
+function loadQuestion(req, res){
+    var quiz = req.body.quizServer
+    console.log(quiz)
+    if(quiz == undefined)
+        res.status(400).send("Undefined!")
+    else{
+        quizModel.loadQuestion(quiz).then(function(response){
+            if(response.length >= 1)
+                res.status(200).json(response)
+            else
+                res.status(204).send("Nenhum resultado encontrado!")
+        })
+    }
 }
 module.exports = {
     loadQuiz,
-    loadQuizByDifficulty
+    loadQuizByDifficulty,
+    loadQuestion
 }
