@@ -42,7 +42,7 @@ function loadAlternatives(req, res){
         res.status(400).send("Undefined!")
     else{
         quizModel.loadAlternatives(idQuestion).then(function(response){
-            if(response >= 1)
+            if(response.length >= 1)
                 res.status(200).json(response)
             else
                 res.status(204).send("Nennhum resultado encontrado")

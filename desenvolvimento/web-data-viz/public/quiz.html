@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/quiz.css">
+    <script src="./js/quiz.js"></script>
     <title>Document</title>
 </head>
 
@@ -13,28 +14,14 @@
     <section>
         <div id="quiz-box">
             <div id="quiz-top">
-                <h2>QUESTÃO 10</h2>
-                <H4>Como que a tatuagem era utilizada pela sociedade chinesa?</H4>
+                <h2 id="question_number"></h2>
+                <H4 id="question_title"></H4>
             </div>
             <div id="quiz-bottom">
-                <div class="alternative-div" id="alternative-1" onclick="play()"> 1. <p>Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Fugiat molestiae cumque exercitationem, nulla nemo corporis iusto
-                        enim, ullam, explicabo sint a animi distinctio vero non quisquam dignissimos voluptates eaque
-                        officia?</p>
-                </div>
-                <div class="alternative-div" id="alternative-2" onclick="play()"> 2. <p>Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit. Recusandae, provident temporibus consequatur hic mollitia est.
-                        Fugit voluptas tempore tempora natus beatae cupiditate illum in aut, reprehenderit veniam rem
-                        deleniti maiores?</p>
-                </div>
-                <div class="alternative-div" id="alternative-3" onclick="play()"> 3. <p>Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit. Aperiam harum animi, numquam possimus asperiores, eum rem, dolor
-                        aliquid ipsum laboriosam voluptatem quam id explicabo sed eaque quisquam eveniet esse aut.</p>
-                </div>
-                <div class="alternative-div" id="alternative-4" onclick="play()"> 4. <p>Lorem ipsum dolor sit amet,
-                        consectetur adipisicing elit. Aperiam harum animi, numquam possimus asperiores, eum rem, dolor
-                        aliquid ipsum laboriosam voluptatem quam id explicabo sed eaque quisquam eveniet esse aut.</p>
-                </div>
+                <div class="alternative-div" id="alternative_1" onclick="play()"> 1.</div>
+                <div class="alternative-div" id="alternative_2" onclick="play()"> 2.</div>
+                <div class="alternative-div" id="alternative_3" onclick="play()"> 3.</div>
+                <div class="alternative-div" id="alternative_4" onclick="play()"> 4.</div>
             </div>
         </div>
     </section>
@@ -42,58 +29,24 @@
 
 </html>
 <script>
-    var i = 1
-    var alternativeList = []
-    var questionList = []
-    function loadQuest() {
-        fetch("quiz/load-question", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                quizServer: sessionStorage.TITLE_QUIZ
-            })
-        }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (response) {
-                    for (var i = 0; i < response.length; i++) {
-                        questionList.push(response[i])
-                        console.log(response[i])
-                    }
-                })
-            }
-        })
+    var i = 0
+
+    function play() {
+        if (i < questionList.length) {
+
+            question_number.innerHTML = `QUESTÃO ${i + 1}`
+            question_title.innerHTML = questionList[i].title
+            loadAlternative(i);
+
+
+            i++
+        }
+        else {
+
+        }
     }
-    function loadAlternative(controller) {
-        console.log("oi")
-        fetch("quiz/load-alternatives", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idQuestionServer: controller
-            })
-        }).then(function (response) {
-            if (response.ok) {
-                console.log("aaaaaaaaaaaaaaaaaa")
-                response.json().then(function (response) {
-                    for (let j = 0; j < response.length; j++) {
-                        alternativeList.push(response[j])
-                        
-                    }
-                })
-            }
-        })
-    }
-    function play(){
-        
-        loadQuest()
-        loadAlternative(i)
-        i++
-    }
-    
+
+
 
 
 </script>
