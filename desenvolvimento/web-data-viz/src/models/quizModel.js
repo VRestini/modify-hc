@@ -20,7 +20,7 @@ function loadQuestion(titleQuiz) {
 }
 function loadAlternatives(idQuestion) {
   var script = `
-        select id, content, wrong from alternatives JOIN question ON question_id = '${idQuestion}';
+        select alternatives.id, content, wrong from alternatives where alternatives.question_id = '${idQuestion}' ;
     `;
   return database.executar(script);
 }

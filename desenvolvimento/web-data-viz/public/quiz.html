@@ -17,21 +17,21 @@
                 <H4>Como que a tatuagem era utilizada pela sociedade chinesa?</H4>
             </div>
             <div id="quiz-bottom">
-                <div class="alternative-div" id="alternative-1" onclick="select(1)"> 1. <p>Lorem ipsum dolor sit amet
+                <div class="alternative-div" id="alternative-1" onclick="play()"> 1. <p>Lorem ipsum dolor sit amet
                         consectetur adipisicing elit. Fugiat molestiae cumque exercitationem, nulla nemo corporis iusto
                         enim, ullam, explicabo sint a animi distinctio vero non quisquam dignissimos voluptates eaque
                         officia?</p>
                 </div>
-                <div class="alternative-div" id="alternative-2" onclick="select(2)"> 2. <p>Lorem ipsum dolor sit amet
+                <div class="alternative-div" id="alternative-2" onclick="play()"> 2. <p>Lorem ipsum dolor sit amet
                         consectetur adipisicing elit. Recusandae, provident temporibus consequatur hic mollitia est.
                         Fugit voluptas tempore tempora natus beatae cupiditate illum in aut, reprehenderit veniam rem
                         deleniti maiores?</p>
                 </div>
-                <div class="alternative-div" id="alternative-3" onclick="select(3)"> 3. <p>Lorem ipsum dolor sit amet,
+                <div class="alternative-div" id="alternative-3" onclick="play()"> 3. <p>Lorem ipsum dolor sit amet,
                         consectetur adipisicing elit. Aperiam harum animi, numquam possimus asperiores, eum rem, dolor
                         aliquid ipsum laboriosam voluptatem quam id explicabo sed eaque quisquam eveniet esse aut.</p>
                 </div>
-                <div class="alternative-div" id="alternative-4" onclick="select(4)"> 4. <p>Lorem ipsum dolor sit amet,
+                <div class="alternative-div" id="alternative-4" onclick="play()"> 4. <p>Lorem ipsum dolor sit amet,
                         consectetur adipisicing elit. Aperiam harum animi, numquam possimus asperiores, eum rem, dolor
                         aliquid ipsum laboriosam voluptatem quam id explicabo sed eaque quisquam eveniet esse aut.</p>
                 </div>
@@ -42,26 +42,58 @@
 
 </html>
 <script>
-    fetch("quiz/load-question", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            quizServer: sessionStorage.TITLE_QUIZ
-        })
-    }).then(function (response) {
-        if (response.ok) {
-            console.log("teste")
-            response.json().then(function(response){
-                for(var i = 0; i<response.length;i++){
-                    alternativesList.push(response[i])
-                    console.log(response[i])
-                }
+    var i = 1
+    var alternativeList = []
+    var questionList = []
+    function loadQuest() {
+        fetch("quiz/load-question", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quizServer: sessionStorage.TITLE_QUIZ
             })
-        }
-    })
-
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (response) {
+                    for (var i = 0; i < response.length; i++) {
+                        questionList.push(response[i])
+                        console.log(response[i])
+                    }
+                })
+            }
+        })
+    }
+    function loadAlternative(controller) {
+        console.log("oi")
+        fetch("quiz/load-alternatives", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idQuestionServer: controller
+            })
+        }).then(function (response) {
+            if (response.ok) {
+                console.log("aaaaaaaaaaaaaaaaaa")
+                response.json().then(function (response) {
+                    for (let j = 0; j < response.length; j++) {
+                        alternativeList.push(response[j])
+                        
+                    }
+                })
+            }
+        })
+    }
+    function play(){
+        
+        loadQuest()
+        loadAlternative(i)
+        i++
+    }
+    
 
 
 </script>

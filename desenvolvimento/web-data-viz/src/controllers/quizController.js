@@ -36,8 +36,22 @@ function loadQuestion(req, res){
         })
     }
 }
+function loadAlternatives(req, res){
+    var idQuestion = req.body.idQuestionServer
+    if(idQuestion == undefined)
+        res.status(400).send("Undefined!")
+    else{
+        quizModel.loadAlternatives(idQuestion).then(function(response){
+            if(response >= 1)
+                res.status(200).json(response)
+            else
+                res.status(204).send("Nennhum resultado encontrado")
+        })
+    }
+}
 module.exports = {
     loadQuiz,
     loadQuizByDifficulty,
-    loadQuestion
+    loadQuestion,
+    loadAlternatives
 }
