@@ -1,4 +1,4 @@
-#quiz-box{
+#quiz_box{
     margin: auto;
     margin-top: 30px;
     width: 70%;
@@ -7,7 +7,7 @@
     border-radius: 15px;
     color: whitesmoke;
     padding: 2%;
-    
+  
     background-color: rgba(0, 0, 0, 0.3);
     font-family: 'gidole';
     box-sizing: border-box;
@@ -39,3 +39,4 @@
 .alternative-div:hover{
     transform: scale(1.02);
 }
+

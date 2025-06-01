@@ -12,7 +12,9 @@
 
 <body>
     <section>
-        <div id="quiz-box">
+
+        
+        <div id="quiz_box">
             <div id="quiz-top">
                 <h2 id="question_number"></h2>
                 <H4 id="question_title"></H4>
@@ -28,26 +30,3 @@
 </body>
 
 </html>
-<script>
-    var i = 0
-
-    function play() {
-        loadQuest()
-        if (i < questionList.length) {
-            
-            question_number.innerHTML = `QUESTÃO ${i + 1}`
-            question_title.innerHTML = questionList[i].title
-            loadAlternative(i);
-
-
-            i++
-        }
-        else {
-
-        }
-    }
-
-
-
-
-</script>
