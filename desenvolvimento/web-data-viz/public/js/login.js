@@ -28,6 +28,7 @@ function login() {
                 window.location.assign("home.html");
                 response.json().then(json => {
                     sessionStorage.NAME_USER = json.name;
+                    sessionStorage.ID_USER = json.id
                 })
             } else
                 console.log("Erro ao tentar login")
