@@ -3,7 +3,7 @@ function exit() {
     if (resposta)
       limparSessao()
   }
-  id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
+  document.getElementById("id_user").innerHTML = sessionStorage.NAME_USER.toUpperCase();
 
   const ctxLine = document.getElementById('chartDoughnut');
   new Chart(ctxLine, {
