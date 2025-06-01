@@ -1,8 +1,9 @@
 
+
 var alternativeList = [];
 var questionList = [];
 var i = 0;
-
+var score = 0
 window.onload = function () {
     loadQuest().then(() => {
         if (questionList.length > 0)
@@ -18,15 +19,28 @@ function showQuest() {
     question_title.innerHTML = questionList[i].title;
 }
 
-async function play() {
+async function play(alternative) {
+    if (alternativeList[alternative].wrong == 0)
+        score++
     i++;
     if (i < questionList.length) {
         showQuest();
         await loadAlternative(questionList[i].id);
         displayAlternatives();
     } else {
-        alert("Quiz concluído!");
-        window.location.assign("home.html");
+
+        await Swal.fire({
+            title: "Quiz finalizado!",
+            text: `Você acertou ${score} questões de ${questionList.length}.`,
+            background: '#1a1a1a', 
+            color: '#ffffff',
+            draggable: true,
+            confirmButtonColor: '#3a0175',
+            timer: 5000
+        }).then((result) => {
+            window.location.assign("home.html");
+        })
+        
     }
 }
 
@@ -39,9 +53,9 @@ function loadQuest() {
         body: JSON.stringify({
             quizServer: sessionStorage.TITLE_QUIZ
         })
-    }).then(function(response) {
+    }).then(function (response) {
         if (response.ok) {
-            return response.json().then(function(data) {
+            return response.json().then(function (data) {
                 questionList = data;
             });
         }
@@ -69,7 +83,7 @@ function loadAlternative(controller) {
 }
 
 function displayAlternatives() {
-    if(alternativeList.length >= 4) {
+    if (alternativeList.length >= 4) {
         alternative_1.innerHTML = "1. " + alternativeList[0].content;
         alternative_2.innerHTML = "2. " + alternativeList[1].content;
         alternative_3.innerHTML = "3. " + alternativeList[2].content;
