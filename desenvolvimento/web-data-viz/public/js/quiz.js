@@ -14,6 +14,8 @@ window.onload = function () {
     })
 }
 
+
+
 function showQuest() {
     question_number.innerHTML = `QUESTÃO ${i + 1}`;
     question_title.innerHTML = questionList[i].title;

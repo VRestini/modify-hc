@@ -1,8 +1,9 @@
 var teste = ""
     var list = []
-    function play(title) {
+    function play(title, id) {
         window.location.assign("quiz.html");
         sessionStorage.TITLE_QUIZ = title;
+        sessionStorage.ID_QUIZ = id;
     }
     function filter(difficulty) {
         if (difficulty != "#") {
@@ -71,7 +72,7 @@ var teste = ""
                                     </svg>
                                 </h1>
                                 <p class="quiz-describe">${response[i].describe_quiz}</p>
-                                <button class="quiz-button" onclick="play('${response[i].title}')" >Jogar</button>
+                                <button class="quiz-button" onclick="play('${response[i].title}', '${response[i].id}')" >Jogar</button>
                             </div>
                         </div>`
                 }
