@@ -4,4 +4,7 @@ var attemptController = require("../controllers/attemptController")
 router.post("/add", function (req, res){
     attemptController.insertAttempt(req, res)
 })
+router.post("/load", function(req, res){
+    attemptController.loadAttemptByUser(req, res)
+})
 module.exports = router
