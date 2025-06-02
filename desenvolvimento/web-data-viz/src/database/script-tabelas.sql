@@ -51,3 +51,4 @@ CREATE TABLE user_answer(
     FOREIGN KEY(alternative_id) REFERENCES alternatives(id),
     FOREIGN KEY(attempt_id) REFERENCES attempt(id)
 );
+SELECT * FROM attempt;

@@ -11,9 +11,26 @@ window.onload = function () {
         loadAlternative(questionList[i].id).then(() => {
             displayAlternatives();
         });
+        
     })
 }
-
+function newAttempt(){
+    let user_id = sessionStorage.ID_USER
+    let quiz_id = sessionStorage.ID_QUIZ
+    fetch("attempt/add",{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            userServer: user_id,
+            quizServer: quiz_id
+        })
+    }).then(function(response){
+        if(response.ok)
+            alert("top")
+    })
+}
 
 
 function showQuest() {
@@ -30,7 +47,7 @@ async function play(alternative) {
         await loadAlternative(questionList[i].id);
         displayAlternatives();
     } else {
-
+        newAttempt()
         await Swal.fire({
             title: "Quiz finalizado!",
             text: `Você acertou ${score} questões de ${questionList.length}.`,
