@@ -15,7 +15,10 @@ function updateValues() {
         console.log(response.body)
         if(response.ok){
             alert("foi")
-
+            response.json().then(function(response){
+                quiz_total_attempt.innerHTML = response[0]['COUNT(attempt.id)']
+            })
+            
             console.log(response)
         }
             
