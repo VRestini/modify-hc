@@ -36,7 +36,7 @@ var teste = ""
                                     </svg>
                                 </h1>
                                 <p class="quiz-describe">${response[i].describe_quiz}</p>
-                                <button class="quiz-button" >Jogar</button>
+                                <button class="quiz-button" onclick="play('${response[i].title}', '${response[i].id}')" >Jogar</button>
                             </div>
                         </div>`
                         }
