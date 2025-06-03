@@ -46,9 +46,8 @@ CREATE TABLE question(
 );
 CREATE TABLE user_answer(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    alternative_id INT NOT NULL,
     attempt_id INT NOT NULL,
-    FOREIGN KEY(alternative_id) REFERENCES alternatives(id),
+    wrong_answer INT NOT NULL,
+    rigth_answer INT NOT NULL,
     FOREIGN KEY(attempt_id) REFERENCES attempt(id)
 );
-SELECT * FROM attempt;

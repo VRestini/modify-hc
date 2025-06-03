@@ -4,6 +4,7 @@ var alternativeList = [];
 var questionList = [];
 var i = 0;
 var score = 0
+var scoreError = 0
 window.onload = function () {
     loadQuest().then(() => {
         if (questionList.length > 0)
@@ -11,7 +12,46 @@ window.onload = function () {
         loadAlternative(questionList[i].id).then(() => {
             displayAlternatives();
         });
+        newAttempt()
+        loadAttemptId()
         
+    })
+}
+function loadAttemptId(){
+    let user_id = sessionStorage.ID_USER
+    let quiz_id = sessionStorage.ID_QUIZ
+    fetch("attempt/load-id", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            userServer: user_id,
+            quizServer: quiz_id
+        })
+    }).then(function(response){
+        if(response.ok)
+            response.json().then(function (data) {
+                sessionStorage.ID_ATTEMPT = data.id
+            });
+            
+    })
+}
+function userAnswer(){
+    let attempt_id = sessionStorage.ID_ATTEMPT
+    fetch("user-answer/add-alternative", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            attemptServer: attempt_id,
+            wrongServer : scoreError,
+            rightServer : score
+        })
+    }).then(function(response){
+        if(response.ok)
+            alert("irraaaa")
     })
 }
 function newAttempt(){
@@ -39,15 +79,19 @@ function showQuest() {
 }
 
 async function play(alternative) {
+    
     if (alternativeList[alternative].wrong == 0)
         score++
+    else
+        scoreError++
     i++;
     if (i < questionList.length) {
         showQuest();
         await loadAlternative(questionList[i].id);
         displayAlternatives();
     } else {
-        newAttempt()
+        
+        userAnswer()
         await Swal.fire({
             title: "Quiz finalizado!",
             text: `Você acertou ${score} questões de ${questionList.length}.`,

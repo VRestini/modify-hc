@@ -30,9 +30,26 @@ function loadAttemptByUser(req, res) {
                 res.status(204).send("Nenhum resultado encontrado!")
         })
     }
-
+}
+function loadAttemptId(req, res) {
+    var user_id = req.body.userServer
+    var quiz_id = req.body.quizServer
+    console.log(user_id)
+    if (user_id == undefined)
+        res.status(400).send("Undefined!");
+    else if (quiz_id == undefined)
+        res.status(400).send("Undefined!");
+    else {
+        attemptModel.loadAttemptId(user_id, quiz_id).then(function (response) {
+            if(response.length >= 1)
+                res.status(200).json(response[0])
+            else
+                res.status(204).send("Nenhum resultado encontrado!")
+        })
+    }
 }
 module.exports = {
     insertAttempt,
-    loadAttemptByUser
+    loadAttemptByUser,
+    loadAttemptId
 }
