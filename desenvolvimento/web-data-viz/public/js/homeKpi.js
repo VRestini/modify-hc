@@ -14,7 +14,6 @@ function updateValues() {
         console.log("To no then")
         console.log(response.body)
         if(response.ok){
-            alert("foi")
             response.json().then(function(response){
                 quiz_total_attempt.innerHTML = response[0]['COUNT(attempt.id)']
             })

@@ -51,7 +51,7 @@ function userAnswer(){
         })
     }).then(function(response){
         if(response.ok)
-            alert("irraaaa")
+            console.log("User answer insert!")
     })
 }
 function newAttempt(){
@@ -68,7 +68,7 @@ function newAttempt(){
         })
     }).then(function(response){
         if(response.ok)
-            alert("top")
+            console.log("Attempt insert!")
     })
 }
 
