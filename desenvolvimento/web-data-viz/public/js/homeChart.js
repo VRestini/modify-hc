@@ -37,20 +37,19 @@ function exit() {
       
   }
   document.getElementById("id_user").innerHTML = sessionStorage.NAME_USER.toUpperCase();
-  var teste = parseInt(sessionStorage.RIGTH_ALERNATIVES) 
-  var teste2 = parseInt(sessionStorage.WRONG_ALERNATIVES)
-  var total = teste + teste2
-  var porce1 = (teste/total)*100
-  var porce2 = (teste2/total)*100
-  console.log(teste, "aaa", teste2)
+  var rigth_answer = parseInt(sessionStorage.RIGTH_ALERNATIVES) 
+  var wrong_answer = parseInt(sessionStorage.WRONG_ALERNATIVES)
+  var total = rigth_answer + wrong_answer
+  var right_percentage = (rigth_answer/total)*100
+  var wrong_percentage = (wrong_answer/total)*100
   const ctxLine = document.getElementById('chartDoughnut');
   new Chart(ctxLine, {
     type: 'doughnut',
     data: {
-      labels: [`Certas: ${porce1.toFixed(0)}%`, `Erradas:${porce2.toFixed(0)}%`],
+      labels: [`Certas: ${right_percentage.toFixed(0)}%`, `Erradas:${wrong_percentage.toFixed(0)}%`],
       datasets: [{
         label: 'Desempenho',
-        data: [porce1, porce2],
+        data: [right_percentage, wrong_percentage],
 
         backgroundColor: [
           '#3a0175',
