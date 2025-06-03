@@ -39,6 +39,8 @@ function loadAttemptId(){
 }
 function userAnswer(){
     let attempt_id = sessionStorage.ID_ATTEMPT
+    let wrongAnswers = scoreError;
+    let rightAnswers = score;
     fetch("user-answer/add-alternative", {
         method: "POST",
         headers: {
@@ -46,8 +48,8 @@ function userAnswer(){
         },
         body: JSON.stringify({
             attemptServer: attempt_id,
-            wrongServer : scoreError,
-            rightServer : score
+            wrongServer : wrongAnswers,
+            rightServer : rightAnswers
         })
     }).then(function(response){
         if(response.ok)

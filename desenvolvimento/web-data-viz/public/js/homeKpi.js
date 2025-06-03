@@ -44,7 +44,12 @@ function loadAcountAlternatives(){
     }).then(function(response){
         if(response.ok){
             response.json().then(function(response){
-                quiz_tentatives_total.innerHTML = response[0]['SUM(wrong_answer) + SUM(rigth_answer)']  
+                let wrong = parseInt(response[0]['SUM(wrong_answer)'])
+                let right = parseInt(response[0]['SUM(rigth_answer)'])
+                sessionStorage.WRONG_ALERNATIVES = wrong
+                sessionStorage.RIGTH_ALERNATIVES = right  
+                console.log(wrong)
+                quiz_tentatives_total.innerHTML = right + wrong 
             })   
             console.log(response)
         }
