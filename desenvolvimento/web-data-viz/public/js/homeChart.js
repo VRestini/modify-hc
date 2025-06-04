@@ -106,6 +106,9 @@ function exit() {
       cutout: '80%',// espaço interno
     }
   });
+  var df1 = sessionStorage.DF1
+  var df2 = sessionStorage.DF2
+  var df3 = sessionStorage.DF3
   const ctxBar = document.getElementById('chartBar');
   new Chart(ctxBar, {
     type: 'bar',
@@ -113,22 +116,22 @@ function exit() {
       labels: ['Nivel 1', 'Nivel 2', 'Nivel 3'],
       datasets: [
         {
-          label: 'Questões nivel 1: 22',
-          data: [22,,],
+          label: `Questões nivel 1: ${df1}`,
+          data: [df1,,],
           borderWidth: 3,
           backgroundColor: '#3a0175 ',
           borderColor: 'transparent '
         },
         {
-          label: 'Questões nivel 2: 24',
-          data: [,24,],
+          label: `Questões nivel 2: ${df2}`,
+          data: [,df2,],
           borderWidth: 3,
           backgroundColor: '#3a0175 ',
           borderColor: 'transparent '
         },
         {
-          label: 'Questões nivel 2: 27',
-          data: [,,27],
+          label: `Questões nivel 2: ${df3}`,
+          data: [,,df3],
           borderWidth: 3,
           backgroundColor: '#3a0175 ',
           borderColor: 'transparent '
