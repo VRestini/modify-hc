@@ -24,9 +24,11 @@ function loadAlternatives(idQuestion) {
     `;
   return database.executar(script);
 }
+
 module.exports = {
   load,
   loadDifficulty,
   loadQuestion,
   loadAlternatives,
+
 };

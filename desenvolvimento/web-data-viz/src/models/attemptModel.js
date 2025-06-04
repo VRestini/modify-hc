@@ -17,8 +17,16 @@ function loadAttemptId(user_id, quiz_id) {
 `
   return database.executar(script);
 }
+function loadAttemptDifficulty(user_id){
+  var script = `
+  SELECT SUM(quiz.difficulty) FROM quiz JOIN attempt ON attempt.quiz_id = quiz.id WHERE attempt.user_id = '${user_id}'; 
+`
+  return database.executar(script);
+}
 module.exports = {
   insertAttempt,
   loadAttempt,
-  loadAttemptId
+  loadAttemptId,
+  loadAttemptDifficulty
+
 };

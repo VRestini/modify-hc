@@ -49,9 +49,11 @@ function loadAlternatives(req, res){
         })
     }
 }
+
 module.exports = {
     loadQuiz,
     loadQuizByDifficulty,
     loadQuestion,
-    loadAlternatives
+    loadAlternatives,
+    
 }

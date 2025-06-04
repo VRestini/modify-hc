@@ -13,4 +13,5 @@ router.post("/load-question", function(req,res){
 router.post("/load-alternatives", function(req, res){
     quizController.loadAlternatives(req,res)
 })
+
 module.exports = router;
