@@ -11,6 +11,9 @@ router.post("/load-id", function(req,res){
     attemptController.loadAttemptId(req,res)
 })
 router.post("/load-difficulty-sum", function(req,res){
+    attemptController.loadAttemptTotalDifficulty(req,res)
+})
+router.post("/load-difficulty", function(req,res){
     attemptController.loadAttemptDifficulty(req,res)
 })
 module.exports = router

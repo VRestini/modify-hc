@@ -48,6 +48,15 @@ function loadAttemptId(req, res) {
         })
     }
 }
+function loadAttemptTotalDifficulty(req,res){
+    var user_id = req.body.userServer
+    attemptModel.loadAttemptTotalDifficulty(user_id).then(function(response){
+        if(response.length >= 1)
+            res.status(200).json(response)
+        else
+            res.status(204).send("Nennhum resultado encontrado")
+    })
+}
 function loadAttemptDifficulty(req,res){
     var user_id = req.body.userServer
     attemptModel.loadAttemptDifficulty(user_id).then(function(response){
@@ -57,9 +66,11 @@ function loadAttemptDifficulty(req,res){
             res.status(204).send("Nennhum resultado encontrado")
     })
 }
+
 module.exports = {
     insertAttempt,
     loadAttemptByUser,
     loadAttemptId,
-    loadAttemptDifficulty
+    loadAttemptDifficulty,
+    loadAttemptTotalDifficulty
 }
