@@ -31,7 +31,7 @@ function loadAttemptDifficulty(user_id){
 }
 function loadIfUserAnswerQuiz(user_id){
   var script = `
-  SELECT DISTINCT(quiz_id) FROM attempt WHERE attempt.user_id = '${user_id}'; 
+  SELECT DISTINCT(title) FROM quiz JOIN attempt  ON attempt.quiz_id = quiz.id WHERE attempt.user_id = '${user_id}'; 
 `
   return database.executar(script);
 }
