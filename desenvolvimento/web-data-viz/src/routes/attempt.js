@@ -16,4 +16,7 @@ router.post("/load-difficulty-sum", function(req,res){
 router.post("/load-difficulty", function(req,res){
     attemptController.loadAttemptDifficulty(req,res)
 })
+router.post("/load-if-user-answer-quiz", function(req,res){
+    attemptController.loadIfUserAnswerQuiz(req,res)
+})
 module.exports = router

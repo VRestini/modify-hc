@@ -66,11 +66,21 @@ function loadAttemptDifficulty(req,res){
             res.status(204).send("Nennhum resultado encontrado")
     })
 }
+function loadIfUserAnswerQuiz(req,res){
+    var user_id = req.body.userServer
+    attemptModel.loadIfUserAnswerQuiz(user_id).then(function(response){
+        if(response.length >= 1)
+            res.status(200).json(response)
+        else
+            res.status(204).send("Nennhum resultado encontrado")
+    })
+}
 
 module.exports = {
     insertAttempt,
     loadAttemptByUser,
     loadAttemptId,
     loadAttemptDifficulty,
-    loadAttemptTotalDifficulty
+    loadAttemptTotalDifficulty,
+    loadIfUserAnswerQuiz
 }
