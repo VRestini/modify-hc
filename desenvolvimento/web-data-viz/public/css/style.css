@@ -189,10 +189,11 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1%;
 }
 .container-about-left img{
-    border-radius: 15px;
-    height: 300px;
+    border-radius: 10px;
+    margin-left: 5%;
     max-width: 100%;
 }
 .container-about-right{
@@ -201,4 +202,17 @@ h2{
 }
 .container-about-right span{
     text-align: justify;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+#box_footer{
+    display: flex;
+    align-items: center;
+    
+    width: 20%;
+    justify-content: space-around;
 }
