@@ -25,7 +25,7 @@ var information = {
     titulo: "Pintura",
     corpo: `A pintura corporal é uma das formas mais antigas de expressão humana:<br><br>
         • Índios Brasileiros: usam urucum e jenipapo em rituais de passagem, guerra e celebrações.<br><br>
-        • Aborígenes Australianos: suas pinturas contam histórias do Dreamtime usando pontos e símbolos tradicionais.<br><br>
+        • Aborígenes: suas pinturas contam histórias do Dreamtime usando pontos e símbolos tradicionais.<br><br>
         • Maoris: a pintura facial (moko) era "assinatura" única de cada indivíduo.<br><br>
         • Henna: no Oriente Médio e Índia, a mehndi é aplicada em noivas para proteção e fertilidade.`,
   },
@@ -40,8 +40,8 @@ var information = {
   escarificacao: {
     titulo: "Escarificação",
     corpo: `A escarificação é a arte de criar padrões através de cicatrizes intencionais:<br><br>
-    • Tribos Africanas: os Dinka e Nuer do Sudão praticam escarificação facial como rito de passagem para a vida adulta.<br><br>
-    • Austrália Indígena: os aborígenes usam escarificação para contar histórias do "Tempo do Sonho".<br><br>
+    • Sudão do Sul: os Dinka e Nuer, grupo étinico do Sudão do Sul, praticam escarificação facial como rito de passagem para a vida adulta.<br><br>
+    • Austrália:  os aborígenes, povo indígena australiano, usam escarificação para contar histórias do "Tempo do Sonho".<br><br>
     • Nova Guiné: os homens Sepik realizam escarificações que imitam a pele de crocodilos, símbolo de força.<br><br>
     • Técnicas: incluem corte, branding (queimadura) e levantamento de pele, sempre com cuidados pós-procedimento para obter o efeito desejado.`,
   },
