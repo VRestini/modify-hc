@@ -1,7 +1,10 @@
 window.onload = async function () {
     await loadQuest()
     await verifyIfUserAnswerQuiz()
-    addUserAnswer()
+    setTimeout(() => {
+        addUserAnswer()
+      }, 500);
+    
 }
 var list = []
 var listUserAnswer = []
