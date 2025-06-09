@@ -51,8 +51,45 @@ function filter(difficulty) {
     }
 }
 function exit() {
-    limparSessao()
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+            });
+        }
+    });
+
+
+    Swal.fire({
+        title: "Deseja deslogar?",
+        background: '#1a1a1a',
+        color: '#ffffff',
+        showCancelButton: true,
+        cancelButtonColor: "#ff0000",
+        confirmButtonText: "Sim, desejo deslogar.",
+        cancelButtonText: "Cancelar",
+        confirmButtonColor: '#3a0175',
+        timer: 5000
+    }).then((result) => {
+        if (result.isConfirmed) {
+            limparSessao()
+        }
+
+    })
+
 }
+
 async function verifyIfUserAnswerQuiz() {
     var user_id = sessionStorage.ID_USER
     fetch("attempt/load-if-user-answer-quiz", {
@@ -82,9 +119,9 @@ function addUserAnswer() {
         listTitle.push(quizTitles[i].textContent.trim())
     }
     for (let i = 0; i < listUserAnswer.length; i++) {
-        var test = listUserAnswer[i].title 
+        var test = listUserAnswer[i].title
         for (let j = 0; j < listTitle.length; j++) {
-            if(test == listTitle[j])
+            if (test == listTitle[j])
                 quizTitles[j].innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" class="full-quiz" height="20px" viewBox="0 -960 960 960" fill="#e3e3e3">
                                             <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-18-2-36t-6-35l65-65q11 32 17 66t6 70q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-56-216L254-466l56-56 114 114 400-401 56 56-456 457Z"/>
                                         </svg>`
