@@ -1,7 +1,7 @@
 function exit(){
     limparSessao()
 }
-id_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
+name_user.innerHTML = sessionStorage.NAME_USER.toUpperCase();
 function popup(content){
     document.body.classList.add('blur-active');
     document.querySelector('.card-box-big').style.display = 'block';

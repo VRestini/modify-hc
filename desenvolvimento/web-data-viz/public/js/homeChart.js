@@ -36,7 +36,7 @@ function exit() {
     })
       
   }
-  document.getElementById("id_user").innerHTML = sessionStorage.NAME_USER.toUpperCase();
+  document.getElementById("name_user").innerHTML = sessionStorage.NAME_USER.toUpperCase();
   var rigth_answer = parseInt(sessionStorage.RIGTH_ALERNATIVES) 
   var wrong_answer = parseInt(sessionStorage.WRONG_ALERNATIVES)
   var total = rigth_answer + wrong_answer
