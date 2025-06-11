@@ -12,17 +12,17 @@ USE modify;
 CREATE TABLE user(
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(40) NOT NULL,
-    email VARCHAR(60) NOT NULL,
+    email VARCHAR(60) NOT NULL UNIQUE,
     password VARCHAR(30) NOT NULL   
 );
+
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(45) NOT NULL,
     is_done TINYINT NOT NULL,
-    difficulty INT,
+    difficulty CHAR(1),
     describe_quiz VARCHAR(200) NOT NULL
 );
-
 CREATE TABLE attempt(
     id INT NOT NULL AUTO_INCREMENT,
     quiz_id INT NOT NULL,
@@ -33,13 +33,6 @@ CREATE TABLE attempt(
     PRIMARY KEY(id, quiz_id, user_id)
 );
 
-
-CREATE TABLE question(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(45) NOT NULL,
-    quiz_id INT NOT NULL,
-    FOREIGN KEY(quiz_id) REFERENCES quiz(id)
-);
 CREATE TABLE alternatives(
     id INT PRIMARY KEY AUTO_INCREMENT,
     content VARCHAR(150) NOT NULL,
@@ -47,12 +40,16 @@ CREATE TABLE alternatives(
     question_id INT NOT NULL,
     Foreign Key (question_id) REFERENCES question (id)
 );
+CREATE TABLE question(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(45) NOT NULL,
+    quiz_id INT NOT NULL,
+    FOREIGN KEY(quiz_id) REFERENCES quiz(id)
+);
 CREATE TABLE user_answer(
     id INT PRIMARY KEY AUTO_INCREMENT,
+    alternative_id INT NOT NULL,
     attempt_id INT NOT NULL,
-    wrong_answer INT NOT NULL,
-    rigth_answer INT NOT NULL,
+    FOREIGN KEY(alternative_id) REFERENCES alternatives(id),
     FOREIGN KEY(attempt_id) REFERENCES attempt(id)
 );
-SELECT * FROM user_answer;
-SELECT * FROM user;
