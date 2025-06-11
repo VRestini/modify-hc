@@ -160,3 +160,16 @@ async function loadQuest() {
         }
     })
 }
+function searchQuizzes() {
+    const searchTerm = document.getElementById('search_bar').value.toLowerCase();
+    const quizCards = document.querySelectorAll('.quiz-card');
+    
+    quizCards.forEach(card => {
+        const title = card.querySelector('.quiz-title').textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+            card.style.display = 'flex'; 
+        } else {
+            card.style.display = 'none'; 
+        }
+    });
+}
