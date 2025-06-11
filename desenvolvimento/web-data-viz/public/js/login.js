@@ -24,8 +24,16 @@ function login() {
             console.log(response)
             if (response.ok) {
                 console.log(response)
-                alert("login feito")
-                window.location.assign("home.html");
+                Swal.fire({
+                    title: "Login realizado!",
+                    background: '#1a1a1a', 
+                    color: '#ffffff',
+                    draggable: true,
+                    confirmButtonColor: '#3a0175',
+                    timer: 5000
+                }).then((result) => {
+                    window.location.assign("home.html");
+                })
                 response.json().then(json => {
                     sessionStorage.NAME_USER = json.name;
                     sessionStorage.ID_USER = json.id

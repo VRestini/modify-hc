@@ -25,7 +25,16 @@ function register(){
             }),
         }).then(function(response){
             if(response.ok)
-                window.location.assign("login.html");
+                Swal.fire({
+                    title: "Cadastro realizado!",
+                    background: '#1a1a1a', 
+                    color: '#ffffff',
+                    draggable: true,
+                    confirmButtonColor: '#3a0175',
+                    timer: 5000
+                }).then((result) => {
+                    window.location.assign("login.html");
+                })
         })
 
         
