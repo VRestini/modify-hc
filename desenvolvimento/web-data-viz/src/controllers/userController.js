@@ -22,6 +22,28 @@ function authenticate(req, res){
             })
     }
 }
+function validateEmail(req,res){
+    var email = req.body.emailServer;
+    if (email == undefined) {
+        res.status(400).send("email = undefined!");
+    }else{
+        userModel.validateEmail( email)
+        .then(
+            function (result) {
+                res.json(result);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+    } 
+}
 function register(req, res) {   
     var name = req.body.nameServer;
     var email = req.body.emailServer;
@@ -52,5 +74,6 @@ function register(req, res) {
 }
 module.exports = {
     authenticate,
-    register
+    register,
+    validateEmail
 }

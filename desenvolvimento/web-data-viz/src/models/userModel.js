@@ -7,6 +7,13 @@ function authenticate(email, password) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function validateEmail(email){
+    var instrucaoSql = `
+        SELECT email FROM user WHERE email = '${email}';
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 function register(name, email, password) {
     
     var instrucaoSql = `
@@ -17,5 +24,6 @@ function register(name, email, password) {
 }
 module.exports = {
     authenticate,
-    register
+    register,
+    validateEmail
 };
