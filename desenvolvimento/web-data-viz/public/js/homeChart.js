@@ -1,3 +1,17 @@
+
+function startCharts() {
+  const doughnutCanvas = document.getElementById('chartDoughnut');
+  const barCanvas = document.getElementById('chartBar');
+  const condition = sessionStorage.RIGTH_ALERNATIVES && sessionStorage.WRONG_ALERNATIVES &&
+                 sessionStorage.DF1 && sessionStorage.DF2 && sessionStorage.DF3;
+  if (doughnutCanvas && barCanvas && condition) {
+    doughnut();
+    bar();
+  } else {
+    setTimeout(startCharts, 100);
+  }
+}
+window.addEventListener('DOMContentLoaded', startCharts);
 function exit() {
     Swal.fire({
         title: "Are you sure?",
@@ -37,75 +51,78 @@ function exit() {
       
   }
   document.getElementById("name_user").innerHTML = sessionStorage.NAME_USER.toUpperCase();
-  var rigth_answer = parseInt(sessionStorage.RIGTH_ALERNATIVES) 
-  var wrong_answer = parseInt(sessionStorage.WRONG_ALERNATIVES)
-  var total = rigth_answer + wrong_answer
-  var right_percentage = (rigth_answer/total)*100
-  var wrong_percentage = (wrong_answer/total)*100
-  const ctxLine = document.getElementById('chartDoughnut');
-  new Chart(ctxLine, {
-    type: 'doughnut',
-    data: {
-      labels: [`Certas: ${right_percentage.toFixed(0)}%`, `Erradas:${wrong_percentage.toFixed(0)}%`],
-      datasets: [{
-        label: 'Desempenho',
-        data: [right_percentage, wrong_percentage],
-
-        backgroundColor: [
-          '#3a0175',
-          'gray'
-        ],
-        borderColor: [
-          'transparent',
-          'transparent'
-        ],
-        borderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-
-        title: {
-          display: true,
-          text: 'QUESTÕES',
-          color: 'rgba(255,255,255,1)',
-          font: {
-            family: 'gidole',
-            size: 25
-          },
-        },
-        legend: {
-          display: true,
-          position: 'bottom',
-          labels: {
-            color: 'white',
+  function doughnut(){
+    var rigth_answer = parseInt(sessionStorage.RIGTH_ALERNATIVES) 
+    var wrong_answer = parseInt(sessionStorage.WRONG_ALERNATIVES)
+    var total = rigth_answer + wrong_answer
+    var right_percentage = (rigth_answer/total)*100
+    var wrong_percentage = (wrong_answer/total)*100
+    const ctxLine = document.getElementById('chartDoughnut');
+    new Chart(ctxLine, {
+      type: 'doughnut',
+      data: {
+        labels: [`Certas: ${right_percentage.toFixed(0)}%`, `Erradas:${wrong_percentage.toFixed(0)}%`],
+        datasets: [{
+          label: 'Desempenho',
+          data: [right_percentage, wrong_percentage],
+  
+          backgroundColor: [
+            '#3a0175',
+            'gray'
+          ],
+          borderColor: [
+            'transparent',
+            'transparent'
+          ],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+  
+          title: {
+            display: true,
+            text: 'QUESTÕES',
+            color: 'rgba(255,255,255,1)',
             font: {
               family: 'gidole',
-              size: 14
+              size: 25
             },
-            padding: 20,
-  
-            usePointStyle: true
-          }
-        },
-        tooltip: {
-          enabled: true,
-          callbacks: {
-            label: function (context) {
-              return `${context.label}: ${context.raw}%`;
+          },
+          legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+              color: 'white',
+              font: {
+                family: 'gidole',
+                size: 14
+              },
+              padding: 20,
+    
+              usePointStyle: true
+            }
+          },
+          tooltip: {
+            enabled: true,
+            callbacks: {
+              label: function (context) {
+                return `${context.label}: ${context.raw}%`;
+              }
             }
           }
-        }
-      },
-
-      animation: {
-        animateScale: true,
-        animateRotate: true
-      },
-      cutout: '80%',// espaço interno
-    }
-  });
+        },
+  
+        animation: {
+          animateScale: true,
+          animateRotate: true
+        },
+        cutout: '80%',// espaço interno
+      }
+    })
+  }
+  function bar(){
   var df1 = sessionStorage.DF1
   var df2 = sessionStorage.DF2
   var df3 = sessionStorage.DF3
@@ -175,4 +192,5 @@ function exit() {
       }
     }
 
-  });
+  })
+}
