@@ -92,9 +92,10 @@ async function play(alternative) {
         await loadAlternative(questionList[i].id);
         displayAlternatives();
     } else {
-        userAnswer()
+        
         sessionStorage.RIGTH_ALERNATIVES = score
         sessionStorage.WRONG_ALERNATIVES = scoreError
+        userAnswer()
         await loadDifficulty()
         
         await Swal.fire({
