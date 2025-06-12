@@ -37,10 +37,11 @@ function loadAttemptId(){
             
     })
 }
-function userAnswer(){
+async function userAnswer(){
     let attempt_id = sessionStorage.ID_ATTEMPT
     let wrongAnswers = scoreError;
     let rightAnswers = score;
+    console.log(`Enviando: attempt=${attempt_id}, wrong=${wrongAnswers}, right=${rightAnswers}`)
     fetch("user-answer/add-alternative", {
         method: "POST",
         headers: {
@@ -95,7 +96,7 @@ async function play(alternative) {
         
         sessionStorage.RIGTH_ALERNATIVES = score
         sessionStorage.WRONG_ALERNATIVES = scoreError
-        userAnswer()
+        await userAnswer()
         await loadDifficulty()
         
         await Swal.fire({

@@ -1,8 +1,9 @@
 var userAnswerModel = require("../models/userAnswerModel")
 function insertUserAnswer(req, res){
     var attempt_id = req.body.attemptServer
-    var wrong = req.body.wrongServer
-    var right = req.body.rightServer
+    var wrong = req.body.wrongServer; 
+    var right = req.body.rightServer;
+    console.log(`Dados recebidos: attempt_id=${attempt_id}, wrong=${wrong}, right=${right}`);
     userAnswerModel.insertUserAnswer(attempt_id,wrong, right).then(
         function(response){
             res.json(response)
