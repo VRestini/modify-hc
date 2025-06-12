@@ -4,7 +4,7 @@ function startCharts() {
   const barCanvas = document.getElementById('chartBar');
   const condition = sessionStorage.RIGTH_ALERNATIVES && sessionStorage.WRONG_ALERNATIVES &&
                  sessionStorage.DF1 && sessionStorage.DF2 && sessionStorage.DF3;
-  if (doughnutCanvas && barCanvas && condition) {
+  if (doughnutCanvas && barCanvas && condition ) {
     doughnut();
     bar();
   } else {
@@ -13,24 +13,7 @@ function startCharts() {
 }
 window.addEventListener('DOMContentLoaded', startCharts);
 function exit() {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success"
-          });
-        }
-      });
-
+    
 
     Swal.fire({
         title: "Deseja deslogar?",
@@ -52,8 +35,10 @@ function exit() {
   }
   document.getElementById("name_user").innerHTML = sessionStorage.NAME_USER.toUpperCase();
   function doughnut(){
+    
     var rigth_answer = parseInt(sessionStorage.RIGTH_ALERNATIVES) 
     var wrong_answer = parseInt(sessionStorage.WRONG_ALERNATIVES)
+    
     var total = rigth_answer + wrong_answer
     var right_percentage = (rigth_answer/total)*100
     var wrong_percentage = (wrong_answer/total)*100

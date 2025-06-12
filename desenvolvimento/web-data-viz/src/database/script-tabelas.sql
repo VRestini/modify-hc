@@ -8,6 +8,7 @@ comandos para mysql server
 
 CREATE DATABASE modify;
 USE modify;
+drop database modify;
 
 CREATE TABLE user(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -19,8 +20,7 @@ CREATE TABLE user(
 CREATE TABLE quiz(
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(45) NOT NULL,
-    is_done TINYINT NOT NULL,
-    difficulty CHAR(1),
+    difficulty INT,
     describe_quiz VARCHAR(200) NOT NULL
 );
 CREATE TABLE attempt(
@@ -48,8 +48,9 @@ CREATE TABLE question(
 );
 CREATE TABLE user_answer(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    alternative_id INT NOT NULL,
     attempt_id INT NOT NULL,
-    FOREIGN KEY(alternative_id) REFERENCES alternatives(id),
+    wrong_answer INT NOT NULL,
+    rigth_answer INT NOT NULL,
     FOREIGN KEY(attempt_id) REFERENCES attempt(id)
 );
+drop Table user_answer;
