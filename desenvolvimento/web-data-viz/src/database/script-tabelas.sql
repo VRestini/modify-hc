@@ -46,6 +46,7 @@ CREATE TABLE question(
     quiz_id INT NOT NULL,
     FOREIGN KEY(quiz_id) REFERENCES quiz(id)
 );
+
 CREATE TABLE user_answer(
     id INT PRIMARY KEY AUTO_INCREMENT,
     attempt_id INT NOT NULL,

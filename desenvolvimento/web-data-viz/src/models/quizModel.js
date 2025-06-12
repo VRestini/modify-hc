@@ -14,7 +14,7 @@ function loadDifficulty(difficulty) {
 }
 function loadQuestion(titleQuiz) {
   var script = `
-        select question.id, question.title from question JOIN quiz on quiz.title = '${titleQuiz}'
+        SELECT question.id, question.title FROM question JOIN quiz ON quiz.id = question.quiz_id WHERE quiz.title = '${titleQuiz}';
     `;
   return database.executar(script);
 }

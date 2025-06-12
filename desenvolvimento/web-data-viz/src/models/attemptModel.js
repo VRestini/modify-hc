@@ -7,7 +7,7 @@ function insertAttempt(quiz_id, user_id) {
 }
 function loadAttempt(user_id) {
   var script = `
-        SELECT COUNT(attempt.id) FROM attempt JOIN user ON attempt.user_id = '${user_id}'; 
+        SELECT COUNT(attempt.id) FROM attempt WHERE attempt.user_id ='${user_id}'; 
     `
   return database.executar(script);
 }

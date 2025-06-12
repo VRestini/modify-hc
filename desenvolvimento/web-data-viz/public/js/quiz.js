@@ -103,7 +103,7 @@ async function play(alternative) {
             confirmButtonColor: '#3a0175',
             timer: 5000
         }).then((result) => {
-            window.location.assign("home.html");
+            window.location.assign("quizMenu.html");
         })
         
     }
