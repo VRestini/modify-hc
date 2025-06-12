@@ -5,19 +5,21 @@ var questionList = [];
 var i = 0;
 var score = 0
 var scoreError = 0
-window.onload = function () {
-    loadQuest().then(() => {
+window.onload =  function () {
+    loadQuest().then(async () => {
         if (questionList.length > 0)
             showQuest();
         loadAlternative(questionList[i].id).then(() => {
             displayAlternatives();
         });
         newAttempt()
-        loadAttemptId()
+        setTimeout(() => {
+            loadAttemptId();
+        }, 200);
         
     })
 }
-function loadAttemptId(){
+async function loadAttemptId(){
     let user_id = sessionStorage.ID_USER
     let quiz_id = sessionStorage.ID_QUIZ
     fetch("attempt/load-id", {
@@ -32,6 +34,7 @@ function loadAttemptId(){
     }).then(function(response){
         if(response.ok)
             response.json().then(function (data) {
+                console.log(`AAAAAAAAAAAAAAAAAAAAaa attempt id: ${data.id}`)
                 sessionStorage.ID_ATTEMPT = data.id
             });
             
