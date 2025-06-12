@@ -5,7 +5,7 @@ function insertUserAnswer(attempt_id, wrong, right) {
     `;
   return database.executar(script);
 }
-function loadAcountUserAnswer(attempt_id, user_id){
+function loadAcountUserAnswer(user_id){
   var script = `
         SELECT SUM(wrong_answer), SUM(rigth_answer) from user_answer JOIN attempt ON attempt_id = attempt.id WHERE attempt.user_id = '${user_id}' ;
     `;

@@ -19,9 +19,9 @@ function insertUserAnswer(req, res){
     );
 }
 function loadUserAnswer(req, res){
-    var attempt_id = req.body.attemptServer
+
     var user_id = req.body.userServer
-    userAnswerModel.loadAcountUserAnswer(attempt_id,user_id).then(
+    userAnswerModel.loadAcountUserAnswer(user_id).then(
         function(response){
             res.json(response)
         }
